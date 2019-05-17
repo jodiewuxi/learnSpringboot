@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Sample Memo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Memo Sample</h1>
+	<div>
+    	<form th:action="@{/memo/regist}" method="post">
+    		<table>
+    			<tr>
+    				<th>name</th>
+    				<td>
+    					<input type="text" name="name" />
+    				</td>
+    			</tr>
+    			<tr>
+    				<th>memo</th>
+    				<td>
+    					<input type="text" name="memo" />
+    				</td>
+    			</tr>
+    		</table>
+    		<input type="submit" value="登録する" />
+    	</form>
+	</div>
+</body>
+</html>

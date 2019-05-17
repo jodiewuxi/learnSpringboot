@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Sample Memo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Memo Sample</h1>
+	<div>
+		<a href="/memo/new">new</a>
+    	<table>
+    		<tbody th:if="${list} != null">
+    			<tr th:each="memo: ${list}">
+    				<td th:text="${memo.id}"><br /></td>
+    				<td th:text="${memo.name}"><br /></td>
+    				<td th:text="${memo.memo}"><br /></td>
+    				<td th:text="${memo.createAt}"><br /></td>
+    				<td th:text="${memo.updateAt}"><br /></td>
+    				<td>
+    					<a th:href="@{/memo/edit/{id}(id=${memo.id})}">edit</a>
+    				</td>
+    				<td>
+    					<a th:href="@{/memo/remove/{id}(id=${memo.id})}">remove</a>
+    				</td>
+    			</tr>
+    		</tbody>
+    	</table>
+	</div>
+</body>
+</html>

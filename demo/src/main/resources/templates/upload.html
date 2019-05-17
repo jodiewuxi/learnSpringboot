@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+<form  enctype="multipart/form-data">
+select a file:<input type="file" id="txtFilUP" name="file" />
+<input type="button" value="submit" onclick="uploadfile()" />
+</form>
+ <div class="upload-response">
+      <div id="singleFileUploadError"><p  id="error"></p></div>
+      <div id="singleFileUploadSuccess"><p id="success"></p></div>
+ </div>
+
+<script inline="javascript">
+function uploadfile(){
+	console.log("uploadfile function.");
+	var singleFileUploadError = document.getElementById('#singleFileUploadError');
+	var singleFileUploadSuccess = document.getElementById('#singleFileUploadSuccess');
+	var fileSelect = document.getElementById("txtFilUP").files[0];
+	
+	
+	var formData = new FormData();
+    formData.append("file", fileSelect);
+    $.ajax({
+    	
+		type : "POST",
+		url : "uploadfile",
+		data:formData,
+		processData : false,
+		cache: false,
+		,
+		success : function(message) {
+			if(message.equals("success")){
+				$("#success").html("upload file successfully.")
+			}else{
+				alert("error");
+			}			
+		},
+		error : function(e) {						
+			alert("error");
+			}
+		
+    	
+    });
+	
+}
+</script>
+</body>
+</html>

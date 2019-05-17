@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Sample Memo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Memo Sample</h1>
+	<div>
+    	<form th:action="@{/memo/update}"  method="post">
+    		<input type="hidden" name="id" th:field="${form.id}" />
+    		<input type="hidden" name="createAt" th:field="${form.createAt}" />
+    		<table>
+    			<tr>
+    				<th>name</th>
+    				<td>
+    					<input type="text" name="name" th:field="${form.name}" />
+    				</td>
+    			</tr>
+    			<tr>
+    				<th>memo</th>
+    				<td>
+    					<input type="text" name="memo" th:field="${form.memo}" />
+    				</td>
+    			</tr>
+    		</table>
+    		<input type="submit" value="更新する" />
+    	</form>
+	</div>
+</body>
+</html>
