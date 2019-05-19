@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.services.FileUpLoadService;
@@ -24,6 +25,7 @@ public class FileUpLoadController {
 	
 	
 	@PostMapping("/uploadfile")
+	@ResponseBody
 	public String upload(@RequestParam("file") MultipartFile file) {
 		
 		System.out.println("Method upload start");
@@ -35,7 +37,7 @@ public class FileUpLoadController {
 		String ret=filuploadservice.storeFile(file);
 		
 		if(ret.equals("failed")) {
-			return "";
+			return "failed";
 		}else {
 			return "success";
 		}

@@ -31,6 +31,7 @@ public class CommonConfig implements WebMvcConfigurer {
 	LocaleChangeInterceptor localchangeinterceptor;
 	
 	public void addInterceptors(InterceptorRegistry registry) {
+		System.out.println("--------------localchangeinterceptor");
 	    registry.addInterceptor(localchangeinterceptor);
 	}
 

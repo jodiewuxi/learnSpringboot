@@ -24,10 +24,13 @@ public class DemoController {
 	
 	@RequestMapping(value="/",method=RequestMethod.GET)
 	public String memu(Model model) {
-		String msg1 = msg.getMessage("msg1", null, Locale.CHINA);
+		String msg1 = msg.getMessage("msg1", null, Locale.JAPAN);
 		String msg2 = msg.getMessage("msg2", new String[] { "岐阜", "山崎屋" }, Locale.US);
 		model.addAttribute("msg1", msg1);
 		model.addAttribute("msg2", msg2);
+		
+		 System.out.println("----------msg1"+msg1);
+		 System.out.println("----------msg2"+msg2);
 		return "index";
 		
 	}
