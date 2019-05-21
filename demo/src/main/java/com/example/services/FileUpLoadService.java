@@ -1,5 +1,6 @@
 package com.example.services;
 
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -8,6 +9,8 @@ import java.nio.file.StandardCopyOption;
 import org.apache.tomcat.jni.File;	
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -47,9 +50,22 @@ public class FileUpLoadService {
 			e.printStackTrace();
 			return "create file failed";
 		}
-		return "success";
+		return filename;
 	}
 	
+	
+	public Resource loadFileAsResource(String fileName) throws MalformedURLException {
+		Path filePath = this.savefilepath.resolve(fileName).normalize();
+		Resource resource = new UrlResource(filePath.toUri());
+		if(resource.exists()) {
+            
+        } else {
+            System.out.println("file can not found");
+        }
+		return resource;
+		
+		
+	}
 	
 
 }

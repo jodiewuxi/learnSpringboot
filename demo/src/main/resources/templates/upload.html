@@ -28,8 +28,11 @@ function uploadfile(){
 		success : function(message) {
 			console.log(message);
 			if(message=="success"){
-			/* 	$("#success").html("upload file successfully.") */
-			window.location.href="success";
+			 	/* $("#success").html("upload file successfully.") */
+			 	$("#multipleFileUploadError").style.display = "none";
+			 	$("#multipleFileUploadSuccess").innerHTML = "<p>File Uploaded Successfully.</p><p>DownloadUrl : <a href='" + response.fileDownloadUri + "' target='_blank'>" + response.fileDownloadUri + "</a></p>";
+			 	$("#multipleFileUploadSuccess").style.display = "block";
+			//window.location.href="success";
 			}else{
 				alert("error");
 			}			
@@ -52,6 +55,10 @@ select a file:<input type="file" id="txtFilUP" name="file" />
 
 </form>
 <div><p id="success"></p></div>
+ <div class="upload-response">
+      <div id="multipleFileUploadError"></div>
+      <div id="multipleFileUploadSuccess"></div>
+ </div>
 
 </body>
 </html>
