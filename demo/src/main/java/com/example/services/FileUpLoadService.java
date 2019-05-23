@@ -56,6 +56,7 @@ public class FileUpLoadService {
 	
 	public Resource loadFileAsResource(String fileName) throws MalformedURLException {
 		Path filePath = this.savefilepath.resolve(fileName).normalize();
+		System.out.println("path:"+filePath.toAbsolutePath().toString());
 		Resource resource = new UrlResource(filePath.toUri());
 		if(resource.exists()) {
             

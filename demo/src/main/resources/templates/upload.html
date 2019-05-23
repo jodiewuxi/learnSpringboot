@@ -28,11 +28,6 @@ function uploadfile(){
 		success : function(message) {
 			console.log(message);
 			if(message=="success"){
-			 	/* $("#success").html("upload file successfully.") */
-			 	$("#multipleFileUploadError").style.display = "none";
-			 	$("#multipleFileUploadSuccess").innerHTML = "<p>File Uploaded Successfully.</p><p>DownloadUrl : <a href='" + response.fileDownloadUri + "' target='_blank'>" + response.fileDownloadUri + "</a></p>";
-			 	$("#multipleFileUploadSuccess").style.display = "block";
-			//window.location.href="success";
 			}else{
 				alert("error");
 			}			
@@ -46,6 +41,31 @@ function uploadfile(){
 	
 }
 
+function downfile(){
+	console.log("downfile start");
+	   $.ajax({
+	    	
+			type : "GET",
+			url : "downloadFile",
+			data: ({
+				fileName : "CS.SLK"
+			}),
+/* 			processData : false,
+			contentType: false, */
+			cache: false,
+			success : function(message) {
+				console.log(message);
+							},
+			error : function(e) {						
+				alert("error");
+				}
+			
+	    	
+	    });
+	
+	
+}
+
 
 </script>
 
@@ -54,6 +74,9 @@ select a file:<input type="file" id="txtFilUP" name="file" />
 <input type="button" id="sub" value="btn" onclick="uploadfile();"  />
 
 </form>
+
+<input type="button" id="download" value="btndownload" onclick="downfile();"  />
+
 <div><p id="success"></p></div>
  <div class="upload-response">
       <div id="multipleFileUploadError"></div>

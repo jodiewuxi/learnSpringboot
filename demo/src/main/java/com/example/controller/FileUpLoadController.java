@@ -55,19 +55,22 @@ public class FileUpLoadController {
 		
 	}
 	
-	@GetMapping("/downloadFile/{filename:.+}")
-	public ResponseEntity<Resource> downloadFile(@PathVariable String fileName,HttpServletRequest request) throws IOException{
+	@GetMapping("/downloadFile")
+	public ResponseEntity<Resource> downloadFile(@RequestParam String fileName,HttpServletRequest request) throws IOException{
+		System.out.println("downloadFile start");
+		System.out.println("downloadFile fileName:"+fileName);
 		Resource resource = filuploadservice.loadFileAsResource(fileName);
 		
 		String contentType = null;
 		contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
         if(contentType == null) {
             contentType = "application/octet-stream";
-        }
+        }	
         
         return ResponseEntity.ok()
         		.contentType(MediaType.parseMediaType(contentType))
-        		.header(HttpHeaders.CONTENT_DISPOSITION,"attachen:filename=\""+resource.getFilename()+"\"")
+        		.header(HttpHeaders.CONTENT_DISPOSITION,"attachen:filename=\"CS.SLK\"")
+        		.contentLength(resource.contentLength())
         		.body(resource);
         
 		
