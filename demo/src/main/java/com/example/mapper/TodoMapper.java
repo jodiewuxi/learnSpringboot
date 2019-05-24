@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 
 import com.example.entities.Todo;
 
-@Mapper
+@org.apache.ibatis.annotations.Mapper
 public interface TodoMapper {
     @Insert("INSERT INTO todo (title, details, finished) VALUES (#{title}, #{details}, #{finished})")
     @Options(useGeneratedKeys = true, keyProperty = "id")

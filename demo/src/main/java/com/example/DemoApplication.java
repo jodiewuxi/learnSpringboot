@@ -2,6 +2,8 @@ package com.example;
 
 import java.util.Locale;
 
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,7 +22,7 @@ import com.example.mapper.TodoMapper;
 
 
 @SpringBootApplication
-
+@MapperScan(basePackages = { "com.example.mapper.TodoMapper"})
 public class DemoApplication implements CommandLineRunner{
 
 	public static void main(String[] args) {
@@ -28,11 +30,12 @@ public class DemoApplication implements CommandLineRunner{
 	}
 	
 	
+	 
 	 private final TodoMapper todoMapper;
-
-	    public DemoApplication(TodoMapper todoMapper) {
-	        this.todoMapper = todoMapper; // Mapperをインジェクションする
-	    }
+	 	
+    public DemoApplication(TodoMapper todoMapper) {
+        this.todoMapper = todoMapper; // Mapperをインジェクションする
+    }
 	
 	    
 	 // Spring Boot起動時にCommandLineRunner#runメソッドが呼び出される
