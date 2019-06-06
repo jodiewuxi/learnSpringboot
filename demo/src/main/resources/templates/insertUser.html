@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>inset user</title>
+<script th:src="@{/js/jquery-3.3.1.js}"></script>
+<script th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{js/jquery-ui.js}"></script>
+</head>
+<body>
+<form>
+	<p>BookName:<input type="text" id="bookname"/></p>
+	<p>BookWriter:<input type="text" id="bookwriter "/> </p>
+	<p>Comment:<input type="text" id="comment" /></p>
+	<input type="button" id="subbutton" value="addbook" />
+</form>
+<script>
+$(document).ready(function(){
+		$("#subbutton").click(function(event) {
+					console.log("click action");
+				});
+        
+    });
+</script>
+</body>
+</html>
