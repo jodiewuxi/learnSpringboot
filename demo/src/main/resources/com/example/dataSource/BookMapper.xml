@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dataSource.BookMapper">
+  <select id="selectAll" resultType="com.example.entities.Book">
+    select * from readbook where book_id=#{id}
+  </select>
+  <insert id="insertBook" parameterType="com.example.entities.Book">
+  insert into users (bookname,bookwriter,comment,created_on,last_login)
+  values (#{bookname}, #{bookwriter}, #{comment},#{create_on},#{last_login})
+</insert>
+</mapper>
