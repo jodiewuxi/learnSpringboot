@@ -1,0 +1,33 @@
+
+ログイン
+psql -U postgres
+
+
+
+ＤＤＬ取得コマンド
+pg_dump -U postgres  -t readbook --schema-only
+
+
+
+ユーザROLE作成
+CREATE ROLE wupan WITH LOGIN PASSWORD 'password'
+
+
+
+version取得
+select version();
+
+
+
+CREATE文
+CREATE TABLE readbook(
+   book_id serial PRIMARY KEY,
+   bookname VARCHAR (50) UNIQUE NOT NULL,
+   bookwriter VARCHAR (50) NOT NULL,
+   comment VARCHAR (355) UNIQUE NOT NULL,
+   created_on TIMESTAMP NOT NULL,
+   last_login TIMESTAMP
+);
+
+
+insert into readbook(bookname,bookwriter,comment,created_on,last_login) values('book2','writer2','comment2222',TO_TIMESTAMP('2019/06/04 18:34:00', 'YYYY/MM/DD HH24:MI:SS'),TO_TIMESTAMP('2019/06/04 18:34:00', 'YYYY/MM/DD HH24:MI:SS'))
