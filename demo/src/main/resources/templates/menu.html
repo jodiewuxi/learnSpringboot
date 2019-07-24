@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>bookmenu</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+	<div id="mainmenu">
+		<button>stock</button>
+		<button type="button" id="bookmenu">book</button>
+	</div>
+	<div class="" id="book" style="display: none;">
+		<div>
+			<a href="/addbook">addbook</a> 
+		</div>
+		<div>
+			<a href="/bookinfo">bookview</a>
+		</div>
+		<div>
+			 <a	href="/bookviewsearch">search</a>
+		</div>
+		
+		<div>
+			 <a	href="/menu">menu</a>
+		</div>
+	
+	</div>
+
+	<div class="" id="stock"></div>
+
+	<script>
+		$(document).ready(function() {
+			$("#bookmenu").click(function() {
+				$("#book").css("display", "block");
+				$("#mainmenu").css("display","none");
+			});
+
+		});
+	</script>
+
+</body>
+</html>

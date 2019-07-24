@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>inset user</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+	<form th:object="${bookinfo}" id="bookForm">
+		<div>
+			<p>
+				BookName:<input type="text" id="bookname" th:field="*{bookname}" />
+			</p>
+			<p>
+				BookWriter:<input type="text" id="bookwriter"
+					th:field="*{bookwriter}" />
+			</p>
+			<p>
+				Comment:<input type="text" id="comment" th:field="*{comment}" />
+			</p>
+			<input type="button" id="subbutton" value="addbook" /> <a
+				href="/menu">back to menu</a>
+		</div>
+	</form>
+	<div id="resultinfo">
+		<p id="resultText"></p>
+	</div>
+
+	<script>
+		$(document).ready(function() {
+			$("#subbutton").click(function() {
+				event.preventDefault();
+				$.post("bookinfoadd", $("#bookForm").serialize(), function(data) {
+					if (data == "success") {
+						clearlabel();
+						addsuccessinfo();
+					} else if (data == "error") {
+						adderrinfo();
+					}
+
+				});
+
+			});
+
+		});
+		
+		function adderrinfo(){
+			$("#resultText").text("add book error!");
+		}
+		
+		function addsuccessinfo(){
+			
+			$("#resultText").text("add book success!");
+		}
+		
+		function clearlabel(){
+			$("#bookname").val("");
+			$("#bookwriter").val("");
+			$("#comment").val("");
+		}
+		
+	</script>
+
+</body>
+</html>

@@ -10,5 +10,6 @@ import com.example.entities.Book;
 @Mapper
 public interface BookMapper {
 	//@Select("SELECT * FROM readbook")
-	List<Book> selectAll(int id);
+	List<Book> selectAll();
+	void insertBook(Book book);
 }

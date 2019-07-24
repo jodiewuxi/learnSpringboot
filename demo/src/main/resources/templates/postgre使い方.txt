@@ -1,25 +1,33 @@
 
-ƒƒOƒCƒ“
+#login postgre
 psql -U postgres
+passwork: P@ssw0rd
 
+#get schema
+\d tablename;
 
+#get tablelist
+\dt
 
-‚c‚c‚kæ“¾ƒRƒ}ƒ“ƒh
+#alter table
+alter table tablename drop column
+
+#output table schema
 pg_dump -U postgres  -t readbook --schema-only
 
 
 
-ƒ†[ƒUROLEì¬
+#create role
 CREATE ROLE wupan WITH LOGIN PASSWORD 'password'
 
 
 
-versionæ“¾
+#get postgre version 
 select version();
 
 
 
-CREATE•¶
+CREATEï¿½ï¿½
 CREATE TABLE readbook(
    book_id serial PRIMARY KEY,
    bookname VARCHAR (50) UNIQUE NOT NULL,
