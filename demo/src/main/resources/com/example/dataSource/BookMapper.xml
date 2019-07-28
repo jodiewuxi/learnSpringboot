@@ -6,7 +6,7 @@
   <select id="selectAll" resultType="com.example.entities.Book">
     select * from readbook
   </select>
-  <insert id="insertBook" parameterType="com.example.entities.Book">
+  <insert id="insertBook" parameterType="com.example.entities.Book" useGeneratedKeys="true" keyProperty="book_id">
   insert into readbook (bookname,bookwriter,comment)
   values (#{bookname}, #{bookwriter}, #{comment})
 </insert>
